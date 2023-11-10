@@ -74,22 +74,20 @@
                 nodes: [
                     {
                         id: 'Yes',
-                        color: 'Red',
+                        color: '#001100',
                     },
                     {
                         id: 'No',
-                        color: 'Green'
+                        color: '#001100'
                     },
                     {
                         id: 'Self-control',
                         color: '#f5f7fa'
                     },
-
                     {
                         id: 'Physical intervention',
                         color: '#f5f7fa' // Another Orange color
                     },
-
                     {
                         id: 'Awareness',
                         color: '#f5f7fa' // Blue color
@@ -98,16 +96,10 @@
                         id: 'Distraction',
                         color: '#f5f7fa',
                     },
-
                     {
-                        id: 'Punishment',
+                        id: 'Want Strong Feedback',
                         color: '#f5f7fa',
                     },
-                    {
-                        id: 'Strong',
-                        color: '#f5f7fa',
-                    },
-
                     {
                         id: 'EMS Tingling Sensation',
                         color: '#073b4c',
@@ -128,10 +120,7 @@
                         id: 'EMS Actuation',
                         color: '#118ab2',
                     }
-
                 ],
-
-
                 data: [
                     {
                         id: 'id1',
@@ -142,10 +131,7 @@
                         feedback: 'Feedback 1',
                         events: {
                             mouseOver: function () {
-                                // Set hover state for this node
                                 this.setState('hover');
-
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and set their hover states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id2', 'id3', 'id4'];
                                 targetNodeIds.forEach(targetId => {
@@ -157,10 +143,7 @@
                                 )
                             },
                             mouseOut: function () {
-                                // Reset to normal state on mouse out
                                 this.setState('');
-
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and reset their states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id2', 'id3', 'id4'];
                                 targetNodeIds.forEach(targetId => {
@@ -172,14 +155,12 @@
                                 )
                             },
                             click: function () {
-                                alert(`Clicked`);
-                                toggleColors(['id1', 'id2', 'id3','id4'])
                                 
+                                toggleColors(['id1', 'id2', 'id3','id4']) 
                             },
                         },
 
                     },
-
                     {
                         id: 'id2',
                         from: 'Yes',
@@ -188,7 +169,6 @@
                         color: '#ed5565',
                         feedback: 'Feedback 1',
                     },
-
                     {
                         id: 'id3',
                         from: 'Yes',
@@ -198,7 +178,6 @@
                         feedback: 'Feedback 1',
 
                     },
-
                     {
                         id: 'id4',
                         from: 'Yes',
@@ -218,9 +197,7 @@
                         feedback: 'Feedback 1',
                         events: {
                             mouseOver: function () {
-                                // Set hover state for this node
                                 this.setState('hover');
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and set their hover states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id6', 'id7', 'id8'];
                                 targetNodeIds.forEach(targetId => {
@@ -232,9 +209,7 @@
                                 )
                             },
                             mouseOut: function () {
-                                // Reset to normal state on mouse out
                                 this.setState('');
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and reset their states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id6', 'id7', 'id8'];
                                 targetNodeIds.forEach(targetId => {
@@ -246,13 +221,12 @@
                                 )
                             },
                             click: function () {
-                                alert(`Clicked`);
+                                
                                 toggleColors(['id5','id6', 'id7', 'id8'])
                                 
                             },
                         },
                     },
-
                     {
                         id: 'id6',
                         from: 'No',
@@ -290,9 +264,7 @@
                         feedback: 'Feedback 9',
                         events: {
                             mouseOver: function () {
-                                // Set hover state for this node
                                 this.setState('hover');
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and set their hover states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id10', 'id11'];
                                 targetNodeIds.forEach(targetId => {
@@ -304,9 +276,7 @@
                                 )
                             },
                             mouseOut: function () {
-                                // Reset to normal state on mouse out
                                 this.setState('');
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and reset their states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id10', 'id11'];
                                 targetNodeIds.forEach(targetId => {
@@ -319,7 +289,7 @@
                             },
 
                             click: function () {
-                                alert(`Clicked`);
+                                
                                 toggleColors(['id9','id10', 'id11'])
                                 
                             },
@@ -352,9 +322,7 @@
                         feedback: 'Feedback 1',
                         events: {
                             mouseOver: function () {
-                                // Set hover state for this node
                                 this.setState('hover');
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and set their hover states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id13', 'id14', 'id15'];
                                 targetNodeIds.forEach(targetId => {
@@ -366,9 +334,7 @@
                                 )
                             },
                             mouseOut: function () {
-                                // Reset to normal state on mouse out
                                 this.setState('');
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and reset their states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id13', 'id14', 'id15'];
                                 targetNodeIds.forEach(targetId => {
@@ -380,7 +346,7 @@
                                 )
                             },
                             click: function () {
-                                alert(`Clicked`);
+                                
                                 toggleColors(['id12','id13', 'id14', 'id15'])
                                 
                             },
@@ -424,9 +390,7 @@
                         feedback: 'Feedback 1',
                         events: {
                             mouseOver: function () {
-                                // Set hover state for this node
                                 this.setState('hover');
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and set their hover states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id17'];
                                 targetNodeIds.forEach(targetId => {
@@ -438,9 +402,7 @@
                                 )
                             },
                             mouseOut: function () {
-                                // Reset to normal state on mouse out
                                 this.setState('');
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and reset their states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id17'];
                                 targetNodeIds.forEach(targetId => {
@@ -452,7 +414,7 @@
                                 )
                             },
                             click: function () {
-                                alert(`Clicked`);
+                                
                                 toggleColors(['id16','id17'])
                                 
                             },
@@ -476,9 +438,7 @@
                         feedback: 'Feedback 1',
                         events: {
                             mouseOver: function () {
-                                // Set hover state for this node
                                 this.setState('hover');
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and set their hover states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id19'];
                                 targetNodeIds.forEach(targetId => {
@@ -490,9 +450,7 @@
                                 )
                             },
                             mouseOut: function () {
-                                // Reset to normal state on mouse out
                                 this.setState('');
-                                // Find the related "to" nodes ('id2', 'id3', 'id4') and reset their states
                                 const chart = this.series.chart;
                                 const targetNodeIds = ['id19'];
                                 targetNodeIds.forEach(targetId => {
@@ -504,7 +462,7 @@
                                 )
                             },
                             click: function () {
-                                alert(`Clicked`);
+                                
                                 toggleColors(['id18','id19'])
                                 
                             },
@@ -521,12 +479,6 @@
                         color: '#ccd1d9',
                         feedback: 'Feedback 1',
                     },
-
-
-                    ////
-                    //       ['Distraction', 'Yes', 10, '#fc6e51', 'Feedback 9'],
-                    // ['Yes', 'Pneumatic Balloon', 10, '#fc6e51', '19If Distraction Yes'],
-
                     {
                         id: 'id20',
                         from: 'Distraction',
@@ -564,7 +516,7 @@
                                 )
                             },
                             click: function () {
-                                alert(`Clicked`);
+                                
                                 toggleColors(['id20','id21'])
                                 
                             },
@@ -616,8 +568,8 @@
                                 )
                             },
                             click: function () {
-                                alert(`Clicked`);
-                                toggleColors(['id23','id24'])
+                                
+                                toggleColors(['id22','id23'])
                                 
                             },
                         },
@@ -634,7 +586,7 @@
                     },
                     {
                         id: 'id24',
-                        from: 'Strong',
+                        from: 'Want Strong Feedback',
                         to: 'Yes',
                         weight: 10,
                         color: '#656d78',
@@ -669,7 +621,7 @@
                                 )
                             },
                             click: function () {
-                                alert(`Clicked`);
+                                
                                 toggleColors(['id24','id25'])
                                 
                             },
@@ -685,14 +637,9 @@
                         color: '#656d78',
                         feedback: 'Feedback 1',
                     },
-                    // ['Distraction', 'No', 10, '#a0d468', 'Feedback 20'],
-                    // ['No', 'Vibration', 10, '#a0d468', '20If Distraction No'],
-
-                    // ['Strong', 'Yes', 10, '#656d78', 'Feedback 21'],
-                    // ['Yes', 'EMS Actuation', 10, '#656d78', '21If want strong feedback'],
-                    {
+                        {
                         id: 'id26',
-                        from: 'Strong',
+                        from: 'Want Strong Feedback',
                         to: 'No',
                         weight: 10,
                         color: '#A633AA',
@@ -727,7 +674,7 @@
                                 )
                             },
                             click: function (event) {
-                                alert(`Clicked`);
+                                
                                 toggleColors(['id26', 'id27'])
                                 // const chart = this.series.chart;
                                 // const targetNodeIds = ['id26', 'id27']; // Include both 'id26' and 'id27'
@@ -801,63 +748,8 @@
                     }
                 });
             }
-        // function toggleColors(nodeIds) {
-        //         nodeIds.forEach(targetId => {
-        //             const toNode = chart.series[0].points.find(point => point.id === targetId);
-        //             if (toNode) {
-        //                 const currentColor = toNode.color;
-        //                 const originalColor = originalColors[targetId];
-    
-        //                 if (currentColor === 'red') {
-        //                     toNode.update({ color: originalColor });
-        //                 } else {
-        //                     toNode.update({ color: 'red' });
-        //                 }
-        //             }
-        //         });
-        //     }
     </script>
-    <!-- <script>
-        document.addEventListener("DOMContentLoaded", function () {
     
-
-            
-            // Store original colors
-            const originalColors = {};
-    
-            // Store original colors when the chart is rendered
-            chart.series[0].points.forEach(point => {
-                originalColors[point.id] = point.color;
-            });
-    
-            // Toggle colors on click
-            function toggleColors(nodeIds) {
-                nodeIds.forEach(targetId => {
-                    const toNode = chart.series[0].points.find(point => point.id === targetId);
-                    if (toNode) {
-                        const currentColor = toNode.color;
-                        const originalColor = originalColors[targetId];
-    
-                        if (currentColor === 'red') {
-                            toNode.update({ color: originalColor });
-                        } else {
-                            toNode.update({ color: 'red' });
-                        }
-                    }
-                });
-            }
-    
-            // Add click event to all nodes
-            chart.series[0].points.forEach(point => {
-                point.graphic.element.addEventListener('click', function () {
-                    toggleColors(['id26', 'id27']);//get ids from the chart, clicked lines should be changed
-                });
-            });
-    
-        });
-    </script> -->
-    
-    <!-- reset button here and nodeData.color reset -->
 </body>
 
 </html>
