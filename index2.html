@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/sankey.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
+    <style>
+        body {
+            font-family: 'Space Grotesk';
+        }
+    </style>
+</head>
+
+<body>
+
+    <figure class="highcharts-figure">
+        <div id="container"></div>
+        <h3>Hover over the relevant links to see feedback tailored to your needs.</h3>
+        <div>
+            <h3>1. Can you self-control your nail-biting?</h3>
+        </div>
+        <div>
+            <h3>2. Do you want feedback related to physical intervention (e.g., installing an object to hide nails)?
+            </h3>
+        </div>
+        <div>
+            <h3>3.1 Do you want the feedback increase the awareness?</h3>
+        </div>
+        <div>
+            <h3>3.2 Do you want the feedback can be a distraction?</h3>
+        </div>
+        <div>
+            <h3>3.3 Do you want strong feedback or mild feedback?</h3>
+        </div>
+        <div>
+            <h3>3.4 Are you open to feedback that could involve a form of punishment or discomfort?</h3>
+        </div>
+    </figure>
+
+    <script>
+
+        const chart = Highcharts.chart('container', {
+
+            title: {
+                text: 'Feedback Suggestion for Suppressing Nail Biting'
+            },
+            subtitle: {
+                text: 'Paper Title'
+            },
+            accessibility: {
+                point: {
+                    valueDescriptionFormat: '{index}. {point.from} to {point.to}, {point.weight}.'
+                }
+            },
+            tooltip: {
+                headerFormat: null,
+                pointFormat:
+                    '{point.from.from} {point.to} Our Suggestion: <br><strong>{point.feedback} </strong>',
+                nodeFormat: '{point.name}'
+            },
+            //             plotOptions: {
+            //                 series: {
+            //                     point: {
+            //                         events: {
+            //                             mouseOver: function (event) {
+            //                                 const chart = this.series.chart.series[0];
+            //                                 const ev = event.target.feedback;
+            // console.log(ev);
+            //                                 // Add the feedback condition you want to check for
+            //                                 if ("" + ev.includes('Feedback 1')) {
+            //                                     // Loop through the points and set the color to grey if the condition is met
+            //                                     chart.data.forEach(function (point) {
+            //                                         if (point.feedback.includes('Feedback 1')) {
+            //                                             console.log(point);
+            //                                             point.color = '#999999'; // Grey color
+            //                                         }
+            //                                     });
+            //                                 }
+            //                             }
+            //                         }
+            //                     },
+            //                 }
+            //             },
+            // plotOptions: {
+            //     series: {
+            //         states: {
+            //             hover: {
+            //                 enabled: false
+            //             }
+            //         }
+            //     }
+            // },
+            series: [{
+                states: {
+                    hover: {
+                        color: '#a4edba',
+                        borderColor: 'gray'
+                    }
+                },
+                keys: ['from', 'to', 'weight', 'color', 'feedback'],
+                nodes: [
+                    {
+                        id: 'Yes',
+                        color: 'Red',
+                    },
+                    {
+                        id: 'No',
+                        color: 'Green'
+                    },
+                    {
+                        id: 'Self-control',
+                        color: '#f5f7fa'
+                    },
+
+                    {
+                        id: 'Physical intervention',
+                        color: '#f5f7fa' // Another Orange color
+                    },
+
+                    {
+                        id: 'Awareness',
+                        color: '#f5f7fa' // Blue color
+                    },
+                    {
+                        id: 'Distraction',
+                        color: '#f5f7fa',
+                        offset: -1
+                    },
+
+                    {
+                        id: 'Punishment',
+                        color: '#f5f7fa',
+                        offset: -1
+                    },
+                    {
+                        id: 'Strong',
+                        color: '#f5f7fa',
+                        offset: -1
+                    },
+
+                    {
+                        id: 'EMS Tingling Sensation',
+                        color: '#073b4c',
+                        offset: -1
+                    },
+                    {
+                        id: 'Pneumatic Finger Band',
+                        color: '#06d6a0',
+                        offset: -1
+                    },
+                    {
+                        id: 'Vibration',
+                        color: '#ef476f',
+                        offset: -1
+                    }
+                    , {
+                        id: 'Pneumatic Balloon',
+                        color: '#ffd166',
+                        offset: -1
+                    },
+                    {
+                        id: 'EMS Actuation',
+                        color: '#118ab2',
+                        offset: -1
+                    }
+
+                ],
+
+                data: [
+                    ['Self-control', 'Yes', 30, '#ed5565', 'Feedback 1'],
+                    ['Yes', 'Vibration', 10, '#ed5565', 'Feedback 1'],
+                    ['Yes', 'Pneumatic Balloon', 10, '#ed5565', 'Feedback 1'],
+                    ['Yes', 'Pneumatic Finger Band', 10, '#ed5565', 'Feedback 1'],
+
+                    ['Self-control', 'No', 30, '#ffce54', 'Feedback 2'],
+                    ['No', 'Pneumatic Finger Band', 10, '#ffce54', 'If self-control No'],
+                    ['No', 'EMS Actuation', 10, '#ffce54', 'If self-control No'],
+                    ['No', 'EMS Tingling Sensation', 10, '#ffce54', 'If self-control No'],
+
+                    ['Physical intervention', 'Yes', 20, '#48cfad', 'Feedback 9'],
+                    ['Yes', 'Pneumatic Finger Band', 10, '#48cfad', 'If Physical intervention Yes'],
+                    ['Yes', 'EMS Actuation', 10, '#48cfad', 'If Physical intervention Yes'],
+
+                    ['Physical intervention', 'No', 30, '#5d9cec', 'Feedback 0'],
+                    ['No', 'Vibration', 10, '#5d9cec', 'If Physical intervention No'],
+                    ['No', 'Pneumatic Balloon', 10, '#5d9cec', 'If Physical intervention No'],
+                    ['No', 'EMS Tingling Sensation', 10, '#5d9cec', 'If Physical intervention No'],
+
+                    ['Awareness', 'Yes', 10, '#ec87c0', 'Feedback 4'],
+                    ['Yes', 'Pneumatic Finger Band', 10, '#ec87c0', 'If awareness Yes, go to Finger band for clicking'],
+
+                    ['Awareness', 'No', 10, '#ccd1d9', 'Feedback 5'],
+                    ['No', 'Pneumatic Finger Band', 10, '#ccd1d9', 'If awareness No, go to Finger band for bending'],
+
+                    ['Distraction', 'Yes', 10, '#fc6e51', 'Feedback 9'],
+                    ['Yes', 'Pneumatic Balloon', 10, '#fc6e51', 'If Distraction Yes'],
+
+                    ['Distraction', 'No', 10, '#a0d468', 'Feedback 20'],
+                    ['No', 'Vibration', 10, '#a0d468', 'If Distraction No'],
+
+                    ['Strong', 'Yes', 10, '#37bc98', 'Feedback 21'],
+                    ['Yes', 'EMS Actuation', 10, '#37bc98', 'If want strong feedback'],
+
+                    ['Strong', 'No', 20, '#A633AA', 'Feedback 22'],
+                    ['No', 'Pneumatic Finger Band', 10, '#A633AA', 'If want mild feedback'],
+
+
+                    ['Punishment', 'Yes', 10, '#656d78', 'Feedback 23'],
+                    ['Yes', 'EMS Actuation', 10, '#656d78', 'If want punishment feedback'],
+
+                    // ['Punishment', 'No', 10, '#FFC933', 'Feedback 24'],
+
+                ],
+                type: 'sankey',
+                name: 'Sankey demo series'
+                ,
+                events: {
+                    mouseOver: function (event) {
+                        const chart = this;
+                        console.log(event);
+                        // chart.series.forEach(series => {
+                        //     if (series.index === 0) {
+                        //         series.setState('normal');
+                        //     } else {
+                        //         series.setState('inactive');
+                        //     }
+                        // });
+                        if (event) {
+                            console.log(event.target.options.data);
+                            // Access the clicked node's data
+                            const nodeData = event.target.options.data; // Use 'options' to access the feedback
+                            if ("" + nodeData[4].includes('Feedback 1')) {
+                                // Loop through the points and set the color to grey if the condition is met
+                                chart.data.forEach(function (point) {
+                                    if (point.feedback.includes('Feedback 1')) {
+                                       
+                                        console.log(point);
+                                        // 1. Set the point to the hover state
+                                        point.setState('hover');
+
+                                        point.to.setState('hover');
+                                        console.log("pt" + point.to)
+                                        // 2. Set the point.to to the hover state
+                                        point.update({
+                                            // 3. Set the hovering color to grey
+                                        });
+                                        //4. reset the color if mouse over ends
+                                    }
+                                });
+                            }
+                        }
+
+                        //     const chart = this.chart.series[0]
+                        //     console.log(chart);
+                        //     const nodeData = chart.point.options; // Use 'options' to access the feedback
+
+                        //     // Add the feedback condition you want to check for
+                        //     if ("" + nodeData.feedback.includes('Feedback 1')) {
+                        //         // Loop through the points and set the color to grey if the condition is met
+                        //         chart.data.forEach(function (point) {
+                        //             if (point.feedback.includes('Feedback 1')) {
+                        //                 console.log(point);
+                        //                 point.color = '#999999'; // Grey color
+                        //             }
+                        //         });
+                        //     }
+                    }
+                },
+                click: function (event) {
+                    const chart = this;
+                    console.log(this.chart.series[0])
+                    if (event.point) {
+                        // Access the clicked node's data
+                        const nodeData = event.point.options; // Use 'options' to access the feedback
+                        // Display additional information (customize as needed)
+                        alert(`Clicked Node From: ${nodeData.from}\nFeedback: ${nodeData.feedback}\nColor: ${nodeData.color}\nTo: ${nodeData.to}`);
+                        nodeData.color = '#33333'; // Change the color
+                    }
+                },
+
+            }
+
+            ],
+        },
+        );
+
+        chart.series.forEach(series => {
+            console.log(series);
+            if (series.index === 1) {
+                series.setState('normal');
+            } else {
+                series.setState('inactive');
+            }
+        });
+    </script>
+    <!-- reset button here and nodeData.color reset -->
+</body>
+
+</html>

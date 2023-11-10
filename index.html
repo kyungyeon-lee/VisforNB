@@ -1,0 +1,192 @@
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/sankey.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<link href="index.css" rel="stylesheet" type="text/css">
+</link>
+<link href='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
+<style>
+body {
+    font-family: 'Space Grotesk';
+}
+</style>
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <h3>Hover over the relevant links to see feedback tailored to your needs.</h3>
+    <div>
+        <h3>1. Can you self-control your nail-biting?</h3>
+    </div>
+    
+    <div>
+        <h3>2. Do you want feedback related to physical intervention (e.g., installing an object to hide nails)?</h3>
+    </div>
+    <div>
+        <h3>3.1 Do you want the feedback increase the awareness?</h3>
+    </div>
+    <div>
+        <h3>3.2 Do you want the feedback can be a distraction?</h3>
+    </div>
+    <div>
+        <h3>3.3 Do you want strong feedback or mild feedback?</h3>
+    </div>
+    <div>
+        <h3>3.4 Are you open to feedback that could involve a form of punishment or discomfort?</h3>
+    </div>
+</figure>
+
+
+
+<script>
+    Highcharts.chart('container', {
+
+        title: {
+            text: 'Feedback Suggestion for Suppressing Nail Biting'
+        },
+        subtitle: {
+            text:
+                'Paper Title'
+        },
+        accessibility: {
+            point: {
+                valueDescriptionFormat: '{index}. {point.from} to {point.to}, {point.weight}.'
+            }
+        },
+        tooltip: {
+            headerFormat: null,
+            pointFormat:
+                'Our Suggestion: <br><strong>{point.feedback} </strong>',
+            nodeFormat: '{point.name}'
+        },
+        series: [{
+            states: {
+                hover: {
+                    color: '#a4edba',
+                    borderColor: 'gray'
+                }
+            },
+            keys: ['from', 'to', 'weight', 'feedback'],
+            nodes: [
+                {
+                    id: 'Want Strong Feedback',
+                    color: '#009c00'
+                },
+                {
+                    id: 'Want Mild Feedback',
+                    color: '#1a8dff'
+                },
+                {
+                    id: 'Self-control',
+                    color: '#989898'
+                },
+                {
+                    id: 'Self-control - Yes',
+                    color: '#559800'
+                },
+                {
+                    id: 'Self-control - No',
+                    color: '#119898'
+                },
+                {
+                    id: 'Physical intervention',
+                    color: '#e74c3c' // Red color
+                },
+                {
+                    id: 'Physical intervention - Yes',
+                    color: '#ff5733' // Orange color
+                },
+                {
+                    id: 'Physical intervention - No',
+                    color: '#ff7f50' // Coral color
+                },
+                {
+                    id: 'Physical intervention - Yes2',
+                    color: '#ffae42' // Yellow color
+                },
+                {
+                    id: 'Physical intervention - No2',
+                    color: '#ffa500' // Another Orange color
+                },
+                {
+                    id: 'Awareness - Yes',
+                    color: '#1abc9c' // Turquoise color
+                },
+                {
+                    id: 'Awareness - No',
+                    color: '#3498db' // Blue color
+                }
+                ,
+                {
+                    id: 'Awareness - Yes2',
+                    color: '#F9E79F',
+                    offset: -1
+                }
+                ,
+                {
+                    id: 'Awareness - No2',
+                    color: '#F9E79F',
+                    offset: -1
+                }
+
+                ,
+                {
+                    id: 'Punishiment - Yes',
+                    color: '#F9E79F',
+                    offset: -1
+                }
+                ,
+                {
+                    id: 'Punishiment - No',
+                    color: '#F9E79F',
+                    offset: -1
+                }
+
+                ,
+                {
+                    id: 'Punishiment - Yes2',
+                    color: '#F9E79F',
+                    offset: -1
+                }
+                ,
+                {
+                    id: 'Punishiment - No2',
+                    color: '#F9E79F',
+                    offset: -1
+                }
+            ],
+
+            data: [
+
+                //(1) Self-control - Yes
+                ['Self-control', 'Self-control - Yes', 30, 'Vibration, Pneumatic Finger Band, Pneumatic Balloon'],
+                ['Self-control - Yes', 'Physical intervention - Yes', 10, 'Pneumatic Finger Band'],
+                ['Physical intervention - Yes', 'Awareness - Yes', 5, 'Pneumatic Finger Band for clicking'],
+                ['Physical intervention - Yes', 'Awareness - No', 5, 'Pneumatic Finger Band for bending'],
+
+                ['Self-control - Yes', 'Physical intervention - No', 20, 'Vibration, Pneumatic Balloon'],
+                ['Physical intervention - No', 'Distraction - Yes', 10, 'Pneumatic Balloon'],
+                // ['Distraction - Yes', 'Awareness - Yes2', 5, 'Pneumatic Balloon + Vibration'],
+                // ['Distraction - Yes', 'Awareness - No2', 5, 'Only Pneumatic Balloon'],
+
+                ['Physical intervention - No', 'Distraction - No', 10, 'Vibration'],
+
+                //(2) Self-control - No
+                ['Self-control', 'Self-control - No', 30, 'Pneumatic Finger Band, EMS Actuation, EMS Tingling Sensation'],
+                ['Self-control - No', 'Physical intervention - Yes2', 20, 'Pneumatic Finger Band, EMS Actuation'],
+                //If user want strong intervention
+                ['Physical intervention - Yes2', 'Want Strong Feedback', 10, 'Pneumatic Finger Band, EMS Actuation'],
+                ['Physical intervention - Yes2', 'Want Mild Feedback', 10, 'Pneumatic Finger Band, EMS Actuation'],
+                //If user want strong intervention && Aware3
+                ['Self-control - No', 'Physical intervention - No2', 10, 'EMS Tingling Sensation'],
+                ['Physical intervention - No2', 'Punishiment - Yes', 5, 'High V (above Level XX) EMS Tingling Sensation'],
+                ['Physical intervention - No2', 'Punishiment - No', 5, 'Low V (above Level XX) EMS Tingling Sensation'],
+            ],
+            type: 'sankey',
+            name: 'Sankey demo series',
+  
+        }],
+        
+
+    });
+
+</script>

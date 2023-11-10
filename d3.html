@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-array@1"></script>
+<script src="https://unpkg.com/d3-collection@1"></script>
+<script src="https://unpkg.com/d3-path@1"></script>
+<script src="https://unpkg.com/d3-shape@1"></script>
+<script src="https://unpkg.com/d3-sankey@0"></script>
+    <style>
+        body {
+            font-family: 'Space Grotesk';
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <h3>Hover over the relevant links to see feedback tailored to your needs.</h3>
+    <div>
+        <h3>1. Can you self-control your nail-biting?</h3>
+    </div>
+    <div>
+        <h3>2. Do you want feedback related to physical intervention (e.g., installing an object to hide nails)?</h3>
+    </div>
+    <div>
+        <h3>3.1 Do you want the feedback increase the awareness?</h3>
+    </div>
+    <div>
+        <h3>3.2 Do you want the feedback can be a distraction?</h3>
+    </div>
+    <div>
+        <h3>3.3 Do you want strong feedback or mild feedback?</h3>
+    </div>
+    <div>
+        <h3>3.4 Are you open to feedback that could involve a form of punishment or discomfort?</h3>
+    </div>
+
+    <script>
+        const data = [
+            { from: 'Self-control', to: 'Yes', weight: 30, color: '#ed5565', feedback: 'Feedback 1' },
+            { from: 'Yes', to: 'Vibration', weight: 10, color: '#ed5565', feedback: 'Feedback 1' },
+            { from: 'Yes', to: 'Pneumatic Balloon', weight: 10, color: '#ed5565', feedback: 'Feedback 1' },
+            { from: 'Yes', to: 'Pneumatic Finger Band', weight: 10, color: '#ed5565', feedback: 'Feedback 1' },
+            // Add more data points here
+        ];
+
+        const width = 800;
+        const height = 400;
+
+        const svg = d3.select("#container")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        const sankey = d3.sankey()
+            .nodeWidth(15)
+            .nodePadding(10)
+            .extent([[1, 1], [width - 1, height - 6]]);
+
+        const { nodes, links } = sankey({ nodes: data.map(d => ({ name: d.from })), links: data });
+
+        svg.append("g")
+            .selectAll("rect")
+            .data(nodes)
+            .join("rect")
+            .attr("x", d => d.x0)
+            .attr("y", d => d.y0)
+            .attr("height", d => d.y1 - d.y0)
+            .attr("width", d => d.x1 - d.x0)
+            .attr("fill", d => d.color)
+            .on("mouseover", highlightFeedback1Points)
+            .on("mouseout", unhighlightFeedback1Points);
+
+        function highlightFeedback1Points(d) {
+            const feedback1Links = links.filter(link => link.source === d && link.target.feedback === 'Feedback 1');
+            svg.selectAll("rect")
+                .filter(node => feedback1Links.some(link => link.target === node))
+                .attr("class", "highlighted");
+        }
+
+        function unhighlightFeedback1Points() {
+            svg.selectAll("rect.highlighted")
+                .attr("class", "");
+        }
+    </script>
+</body>
+
+</html>
