@@ -8,19 +8,18 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <link href="index.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Space Grotesk' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <style>
         body {
-            font-family: 'Space Grotesk';
+            font-family: 'Open Sans';
         }
     </style>
 </head>
 
 <body>
-
     <figure class="highcharts-figure">
         <div id="container"></div>
-        <h3>Hover over the relevant links to see feedback tailored to your needs.</h3>
+        <h3>Hover over the relevant links to view feedback tailored to your needs. You can <strong>click or unclick multiple nodes</strong> based on your specific cases.</h3>
         <div>
             <h3>1. Can you self-control your nail-biting?</h3>
         </div>
@@ -37,48 +36,43 @@
         <div>
             <h3>3.3 Do you want strong feedback or mild feedback?</h3>
         </div>
-        <div>
-            <h3>3.4 Are you open to feedback that could involve a form of punishment or discomfort?</h3>
-        </div>
     </figure>
-
     <script>
-            
-            // Store original colors
-            const originalColors = {};
-    
 
+        // Store original colors
+        const originalColors = {};
         const chart = Highcharts.chart('container', {
-
-            title: {
-                text: 'Feedback Suggestion for Suppressing Nail Biting'
+            chart: {
+                marginRight: 45, // allows the yAxis labels with (x: 30) to be seen, but reduces navigator size
             },
+            title: {
+                text: 'Feedback Suggestion for Suppressing Nail-Biting'
+            },
+
             subtitle: {
-                text: 'Paper Title'
+                text: 'Understanding Traits of Individuals with Nail-Biting to Explore the Design Space for Multimodal Behavior Feedback'
             },
             accessibility: {
                 point: {
-                    valueDescriptionFormat: '{index}. {point.from} to {point.to}, {point.weight}.'
+                    valueDescriptionFormat: '{index}. {point.from} &#10132; {point.to}, {point.weight}.'
                 }
             },
             tooltip: {
                 headerFormat: null,
                 pointFormat:
-                    '{point.from} ---> {point.to}',
+                    '{point.from} &#10132; {point.to}',
                 nodeFormat: '{point.name}'
             },
-
             series: [{
-
-                keys: ['from', 'to', 'weight', 'color', 'feedback', 'states'],
+                keys: ['from', 'to', 'weight', 'color', 'states'],
                 nodes: [
                     {
                         id: 'Yes',
-                        color: '#001100',
+                        color: '#A6CF98',
                     },
                     {
                         id: 'No',
-                        color: '#001100'
+                        color: '#FF6969'
                     },
                     {
                         id: 'Self-control',
@@ -128,7 +122,6 @@
                         to: 'Yes',
                         weight: 30,
                         color: '#ed5565',
-                        feedback: 'Feedback 1',
                         events: {
                             mouseOver: function () {
                                 this.setState('hover');
@@ -155,8 +148,7 @@
                                 )
                             },
                             click: function () {
-                                
-                                toggleColors(['id1', 'id2', 'id3','id4']) 
+                                toggleColors(['id1', 'id2', 'id3', 'id4'])
                             },
                         },
 
@@ -167,7 +159,6 @@
                         to: 'Vibration',
                         weight: 10,
                         color: '#ed5565',
-                        feedback: 'Feedback 1',
                     },
                     {
                         id: 'id3',
@@ -175,7 +166,6 @@
                         to: 'Pneumatic Balloon',
                         weight: 10,
                         color: '#ed5565',
-                        feedback: 'Feedback 1',
 
                     },
                     {
@@ -184,7 +174,6 @@
                         to: 'Pneumatic Finger Band',
                         weight: 10,
                         color: '#ed5565',
-                        feedback: 'Feedback 1',
                     },
 
                     ////////////
@@ -194,7 +183,6 @@
                         to: 'No',
                         weight: 30,
                         color: '#ffce54',
-                        feedback: 'Feedback 1',
                         events: {
                             mouseOver: function () {
                                 this.setState('hover');
@@ -221,9 +209,7 @@
                                 )
                             },
                             click: function () {
-                                
-                                toggleColors(['id5','id6', 'id7', 'id8'])
-                                
+                                toggleColors(['id5', 'id6', 'id7', 'id8'])
                             },
                         },
                     },
@@ -233,7 +219,6 @@
                         to: 'Pneumatic Finger Band',
                         weight: 10,
                         color: '#ffce54',
-                        feedback: 'Feedback 1',
                     },
 
                     {
@@ -242,7 +227,6 @@
                         to: 'EMS Actuation',
                         weight: 10,
                         color: '#ffce54',
-                        feedback: 'Feedback 1',
 
                     },
 
@@ -252,7 +236,6 @@
                         to: 'EMS Tingling Sensation',
                         weight: 10,
                         color: '#ffce54',
-                        feedback: 'Feedback 1',
                     },
                     //////////
                     {
@@ -261,7 +244,6 @@
                         to: 'Yes',
                         weight: 20,
                         color: '#48cfad',
-                        feedback: 'Feedback 9',
                         events: {
                             mouseOver: function () {
                                 this.setState('hover');
@@ -289,9 +271,7 @@
                             },
 
                             click: function () {
-                                
-                                toggleColors(['id9','id10', 'id11'])
-                                
+                                toggleColors(['id9', 'id10', 'id11'])
                             },
                         },
                     },
@@ -301,7 +281,6 @@
                         to: 'Pneumatic Finger Band',
                         weight: 10,
                         color: '#48cfad',
-                        feedback: 'Feedback 1',
                     },
                     {
                         id: 'id11',
@@ -309,7 +288,6 @@
                         to: 'EMS Actuation',
                         weight: 10,
                         color: '#48cfad',
-                        feedback: 'Feedback 1',
                     },
                     ////
                     ////////////
@@ -319,7 +297,6 @@
                         to: 'No',
                         weight: 30,
                         color: '#5d9cec',
-                        feedback: 'Feedback 1',
                         events: {
                             mouseOver: function () {
                                 this.setState('hover');
@@ -346,9 +323,9 @@
                                 )
                             },
                             click: function () {
-                                
-                                toggleColors(['id12','id13', 'id14', 'id15'])
-                                
+
+                                toggleColors(['id12', 'id13', 'id14', 'id15'])
+
                             },
                         },
                     },
@@ -359,7 +336,6 @@
                         to: 'Vibration',
                         weight: 10,
                         color: '#5d9cec',
-                        feedback: 'Feedback 1',
                     },
 
                     {
@@ -368,7 +344,6 @@
                         to: 'Pneumatic Balloon',
                         weight: 10,
                         color: '#5d9cec',
-                        feedback: 'Feedback 1',
 
                     },
 
@@ -378,7 +353,7 @@
                         to: 'EMS Tingling Sensation',
                         weight: 10,
                         color: '#5d9cec',
-                        feedback: 'Feedback 1',
+
                     },
                     ////
                     {
@@ -387,7 +362,7 @@
                         to: 'Yes',
                         weight: 10,
                         color: '#ec87c0',
-                        feedback: 'Feedback 1',
+
                         events: {
                             mouseOver: function () {
                                 this.setState('hover');
@@ -414,9 +389,9 @@
                                 )
                             },
                             click: function () {
-                                
-                                toggleColors(['id16','id17'])
-                                
+
+                                toggleColors(['id16', 'id17'])
+
                             },
                         },
                     },
@@ -427,7 +402,7 @@
                         to: 'Pneumatic Finger Band',
                         weight: 10,
                         color: '#ec87c0',
-                        feedback: 'Feedback 1',
+
                     },
                     {
                         id: 'id18',
@@ -435,7 +410,7 @@
                         to: 'No',
                         weight: 10,
                         color: '#ccd1d9',
-                        feedback: 'Feedback 1',
+
                         events: {
                             mouseOver: function () {
                                 this.setState('hover');
@@ -462,12 +437,12 @@
                                 )
                             },
                             click: function () {
-                                
-                                toggleColors(['id18','id19'])
-                                
+
+                                toggleColors(['id18', 'id19'])
+
                             },
                         },
-                        
+
                     },
 
                     {
@@ -477,15 +452,15 @@
                         to: 'Pneumatic Finger Band',
                         weight: 10,
                         color: '#ccd1d9',
-                        feedback: 'Feedback 1',
+
                     },
                     {
                         id: 'id20',
                         from: 'Distraction',
                         to: 'Yes',
                         weight: 10,
-                        color: '#fc6e51',
-                        feedback: 'Feedback 1',
+                        color: '#F6FA70',
+
                         events: {
                             mouseOver: function () {
                                 // Set hover state for this node
@@ -516,9 +491,9 @@
                                 )
                             },
                             click: function () {
-                                
-                                toggleColors(['id20','id21'])
-                                
+
+                                toggleColors(['id20', 'id21'])
+
                             },
                         },
                     },
@@ -528,8 +503,8 @@
                         from: 'Yes',
                         to: 'Pneumatic Balloon',
                         weight: 10,
-                        color: '#fc6e51',
-                        feedback: 'Feedback 1',
+                        color: '#F6FA70',
+
                     },
                     {
                         id: 'id22',
@@ -537,7 +512,7 @@
                         to: 'No',
                         weight: 10,
                         color: '#a0d468',
-                        feedback: 'Feedback 1',
+
                         events: {
                             mouseOver: function () {
                                 // Set hover state for this node
@@ -568,9 +543,9 @@
                                 )
                             },
                             click: function () {
-                                
-                                toggleColors(['id22','id23'])
-                                
+
+                                toggleColors(['id22', 'id23'])
+
                             },
                         },
                     },
@@ -582,7 +557,7 @@
                         to: 'Vibration',
                         weight: 10,
                         color: '#a0d468',
-                        feedback: 'Feedback 1',
+
                     },
                     {
                         id: 'id24',
@@ -590,7 +565,7 @@
                         to: 'Yes',
                         weight: 10,
                         color: '#656d78',
-                        feedback: 'Feedback 1',
+
                         events: {
                             mouseOver: function () {
                                 // Set hover state for this node
@@ -621,9 +596,9 @@
                                 )
                             },
                             click: function () {
-                                
-                                toggleColors(['id24','id25'])
-                                
+
+                                toggleColors(['id24', 'id25'])
+
                             },
                         },
                     },
@@ -635,15 +610,15 @@
                         to: 'EMS Actuation',
                         weight: 10,
                         color: '#656d78',
-                        feedback: 'Feedback 1',
+
                     },
-                        {
+                    {
                         id: 'id26',
                         from: 'Want Strong Feedback',
                         to: 'No',
                         weight: 10,
                         color: '#A633AA',
-                        feedback: 'Feedback 1',
+
                         events: {
                             mouseOver: function () {
                                 // Set hover state for this node
@@ -674,26 +649,11 @@
                                 )
                             },
                             click: function (event) {
-                                
+
                                 toggleColors(['id26', 'id27'])
-                                // const chart = this.series.chart;
-                                // const targetNodeIds = ['id26', 'id27']; // Include both 'id26' and 'id27'
-                                // targetNodeIds.forEach(targetId => {
-                                //     const toNode = chart.series[0].points.find(point => point.id === targetId);
-                                //     if (toNode) {
-                                //         // Check the current color and toggle it between red and original color
-                                //         const currentColor = toNode.color;
-                                //         if (currentColor === 'red') {
-                                //             toNode.update({ color: toNode.options.color }); // Reset to the original color
-                                //         } else {
-                                //             toNode.update({ color: 'red' });
-                                //         }
-                                //     }
-                                // });
                             }
                         },
                     },
-
                     {
 
                         id: 'id27',
@@ -701,55 +661,77 @@
                         to: 'Pneumatic Finger Band',
                         weight: 10,
                         color: '#A633AA',
-                        feedback: 'Feedback 1',
                     },
 
                 ],
                 type: 'sankey',
                 name: 'Sankey demo series'
-                ,
-                events: {
-
-                    // click: function (event) {
-                    //     const chart = this;
-                    //     console.log(this.chart.series[0])
-                    //     if (event.point) {
-                    //         // Access the clicked node's data
-                    //         const nodeData = event.point.options; // Use 'options' to access the feedback
-                    //         // Display additional information (customize as needed)
-                    //         alert(`Clicked Node From: ${nodeData.from}\nFeedback: ${nodeData.feedback}\nColor: ${nodeData.color}\nTo: ${nodeData.to}`);
-                    //         nodeData.color= 'red'; // Change the color
-                    //     }
-                    // },
-                }
             }
+
 
             ],
+
+
         },
         );
-            // Store original colors when the chart is rendered
-            chart.series[0].points.forEach(point => {
-                originalColors[point.id] = point.color;
-            });
-    
-            // Toggle colors on click
-            function toggleColors(nodeIds) {
-                nodeIds.forEach(targetId => {
-                    const toNode = chart.series[0].points.find(point => point.id === targetId);
-                    if (toNode) {
-                        const currentColor = toNode.color;
-                        const originalColor = originalColors[targetId];
-    
-                        if (currentColor === 'red') {
-                            toNode.update({ color: originalColor });
-                        } else {
-                            toNode.update({ color: 'red' });
+        // Store original colors when the chart is rendered
+        chart.series[0].points.forEach(point => {
+            originalColors[point.id] = point.color;
+        });
+        chart.update({
+            chart: {
+                events: {
+                    render: function () {
+                        console.log("test");
+                        renderer = chart.renderer,
+                            width = 30;
+
+                        // Delete groups
+                        if (chart.customImgGroup) {
+                            chart.customImgGroup.destroy();
                         }
+
+                        // Create groups
+                        chart.customImgGroup = renderer.g('customImgGroup').add();
+
+                        // Render texts
+                        chart.renderer.image('img/vibration.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 67, 40, 40)
+                            .add(chart.customImgGroup);
+
+                                                // Render texts
+                                                chart.renderer.image('img/balloon.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 120, 40, 40)
+                            .add(chart.customImgGroup);
+                                            // Render texts
+                                            chart.renderer.image('img/bending.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 210, 40, 40)
+                             .add(chart.customImgGroup);
+                            //                 // Render texts
+                                             chart.renderer.image('img/actuation.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 295, 40, 40)
+                             .add(chart.customImgGroup);
+                            //                 // Render texts
+                                            chart.renderer.image('img/stimulation.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 360, 40, 40)
+                             .add(chart.customImgGroup);
                     }
-                });
+                }
             }
+        });
+        // Toggle colors on click
+        function toggleColors(nodeIds) {
+            nodeIds.forEach(targetId => {
+                const toNode = chart.series[0].points.find(point => point.id === targetId);
+                if (toNode) {
+                    const currentColor = toNode.color;
+                    const originalColor = originalColors[targetId];
+
+                    if (currentColor === 'Blue') {
+                        toNode.update({ color: originalColor });
+                    } else {
+                        toNode.update({ color: 'Blue' });
+                    }
+                }
+            });
+        }
     </script>
-    
+
 </body>
 
 </html>
