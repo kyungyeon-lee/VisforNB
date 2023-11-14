@@ -49,6 +49,13 @@
 
         // Store original colors
         const originalColors = {};
+        var feedbackScores = {
+            Vibration: 0,
+            Balloon: 0,
+            Band: 0,
+            Actuation: 0,
+            Tingling: 0
+        };
         const chart = Highcharts.chart('container', {
             chart: {
                 marginRight: 45, // allows the yAxis labels with (x: 30) to be seen, but reduces navigator size
@@ -134,7 +141,7 @@
                 ],
                 data: [
                     {
-                        id: 'id1',
+                        id: 'core',
                         from: 'Self-control',
                         to: 'Yes',
                         weight: 30,
@@ -143,7 +150,7 @@
                             mouseOver: function () {
                                 this.setState('hover');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id2', 'id3', 'id4'];
+                                const targetNodeIds = ['Vibration1', 'Band1', 'Balloon1'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -155,7 +162,7 @@
                             mouseOut: function () {
                                 this.setState('');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id2', 'id3', 'id4'];
+                                const targetNodeIds = ['Vibration1', 'Band1', 'Balloon1'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -165,22 +172,38 @@
                                 )
                             },
                             click: function () {
-                                //points update: Vibration ++, Balloon ++, Band ++
+                                //points update: if toggled --> --, if not toggled --> ++          
+                                //update score again
+                                // feedbackScores.vibration++;
+                                // feedbackScores.balloon++;
                                 //toogleColors if the points are same and if the points are different, toggle 1 lines. 
-                                toggleColors(['id1', 'id2', 'id3', 'id4'])
+                                const targetId = 'core';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
+
+                                if (toNode.color !== "#ed5565") {
+                                    feedbackScores.Vibration--;  // Decrement if color is blue
+                                    feedbackScores.Balloon--;  // Decrement if color is blue
+                                    feedbackScores.Band--;  // Decrement if color is blue
+
+                                } else {
+                                    feedbackScores.Vibration++;  // Decrement if color is blue
+                                    feedbackScores.Balloon++;  // Decrement if color is blue
+                                    feedbackScores.Band++;  // Increment if color is not blue
+                                }
+                                toggleColors(['core', 'Vibration1', 'Band1', 'Balloon1'])
                             },
                         },
 
                     },
                     {
-                        id: 'id2',
+                        id: 'Vibration1',
                         from: 'Yes',
                         to: 'Vibration',
                         weight: 10,
                         color: '#ed5565',
                     },
                     {
-                        id: 'id3',
+                        id: 'Balloon1',
                         from: 'Yes',
                         to: 'Pneumatic Balloon',
                         weight: 10,
@@ -188,7 +211,7 @@
 
                     },
                     {
-                        id: 'id4',
+                        id: 'Band1',
                         from: 'Yes',
                         to: 'Pneumatic Finger Band',
                         weight: 10,
@@ -197,7 +220,7 @@
 
                     ////////////
                     {
-                        id: 'id5',
+                        id: 'core2',
                         from: 'Self-control',
                         to: 'No',
                         weight: 30,
@@ -228,12 +251,25 @@
                                 )
                             },
                             click: function () {
-                                toggleColors(['id5', 'id6', 'id7', 'id8'])
+                                const targetId = 'core2';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
+
+                                if (toNode.color !== "#ffce54") {
+                                    feedbackScores.Actuation--;  // Decrement if color is blue
+                                    feedbackScores.Tingling--;  // Decrement if color is blue
+                                    feedbackScores.Band--;  // Decrement if color is blue
+
+                                } else {
+                                    feedbackScores.Actuation++;  // Decrement if color is blue
+                                    feedbackScores.Tingling++;  // Decrement if color is blue
+                                    feedbackScores.Band++;  // Decrement if color is blue
+                                }
+                                toggleColors(['core2', 'Band2', 'Actuation1', 'Tingling1'])
                             },
                         },
                     },
                     {
-                        id: 'id6',
+                        id: 'Band2',
                         from: 'No',
                         to: 'Pneumatic Finger Band',
                         weight: 10,
@@ -241,7 +277,7 @@
                     },
 
                     {
-                        id: 'id7',
+                        id: 'Actuation1',
                         from: 'No',
                         to: 'EMS Actuation',
                         weight: 10,
@@ -250,7 +286,7 @@
                     },
 
                     {
-                        id: 'id8',
+                        id: 'Tingling1',
                         from: 'No',
                         to: 'EMS Tingling Sensation',
                         weight: 10,
@@ -258,7 +294,7 @@
                     },
                     //////////
                     {
-                        id: 'id9',
+                        id: 'core3',
                         from: 'Physical intervention',
                         to: 'Yes',
                         weight: 20,
@@ -290,19 +326,19 @@
                             },
 
                             click: function () {
-                                toggleColors(['id9', 'id10', 'id11'])
+                                toggleColors(['core3', 'id10', 'id11'])
                             },
                         },
                     },
                     {
-                        id: 'id10',
+                        id: 'Band3',
                         from: 'Yes',
                         to: 'Pneumatic Finger Band',
                         weight: 10,
                         color: '#48cfad',
                     },
                     {
-                        id: 'id11',
+                        id: 'Actuation2',
                         from: 'Yes',
                         to: 'EMS Actuation',
                         weight: 10,
@@ -311,7 +347,7 @@
                     ////
                     ////////////
                     {
-                        id: 'id12',
+                        id: 'core4',
                         from: 'Physical intervention',
                         to: 'No',
                         weight: 30,
@@ -343,14 +379,14 @@
                             },
                             click: function () {
 
-                                toggleColors(['id12', 'id13', 'id14', 'id15'])
+                                toggleColors(['core4', 'id13', 'id14', 'id15'])
 
                             },
                         },
                     },
 
                     {
-                        id: 'id13',
+                        id: 'Vibration2',
                         from: 'No',
                         to: 'Vibration',
                         weight: 10,
@@ -358,7 +394,7 @@
                     },
 
                     {
-                        id: 'id14',
+                        id: 'Balloon2',
                         from: 'No',
                         to: 'Pneumatic Balloon',
                         weight: 10,
@@ -367,7 +403,7 @@
                     },
 
                     {
-                        id: 'id15',
+                        id: 'Tingling2',
                         from: 'No',
                         to: 'EMS Tingling Sensation',
                         weight: 10,
@@ -376,7 +412,7 @@
                     },
                     ////
                     {
-                        id: 'id16',
+                        id: 'core5',
                         from: 'Awareness',
                         to: 'Yes',
                         weight: 10,
@@ -409,7 +445,7 @@
                             },
                             click: function () {
 
-                                toggleColors(['id16', 'id17'])
+                                toggleColors(['core5', 'id17'])
 
                             },
                         },
@@ -424,7 +460,7 @@
 
                     },
                     {
-                        id: 'id18',
+                        id: 'core6',
                         from: 'Awareness',
                         to: 'No',
                         weight: 10,
@@ -457,7 +493,7 @@
                             },
                             click: function () {
 
-                                toggleColors(['id18', 'id19'])
+                                toggleColors(['core6', 'id19'])
 
                             },
                         },
@@ -474,7 +510,7 @@
 
                     },
                     {
-                        id: 'id20',
+                        id: 'core7',
                         from: 'Distraction',
                         to: 'Yes',
                         weight: 10,
@@ -511,7 +547,7 @@
                             },
                             click: function () {
 
-                                toggleColors(['id20', 'id21'])
+                                toggleColors(['core7', 'id21'])
 
                             },
                         },
@@ -526,7 +562,7 @@
 
                     },
                     {
-                        id: 'id22',
+                        id: 'core8',
                         from: 'Distraction',
                         to: 'No',
                         weight: 10,
@@ -563,7 +599,7 @@
                             },
                             click: function () {
 
-                                toggleColors(['id22', 'id23'])
+                                toggleColors(['core8', 'id23'])
 
                             },
                         },
@@ -579,7 +615,7 @@
 
                     },
                     {
-                        id: 'id24',
+                        id: 'core9',
                         from: 'Want Strong Feedback',
                         to: 'Yes',
                         weight: 10,
@@ -616,7 +652,7 @@
                             },
                             click: function () {
 
-                                toggleColors(['id24', 'id25'])
+                                toggleColors(['core9', 'id25'])
 
                             },
                         },
@@ -632,7 +668,7 @@
 
                     },
                     {
-                        id: 'id26',
+                        id: 'core10',
                         from: 'Want Strong Feedback',
                         to: 'No',
                         weight: 10,
@@ -669,7 +705,7 @@
                             },
                             click: function (event) {
 
-                                toggleColors(['id26', 'id27'])
+                                toggleColors(['core10', 'id27'])
                             }
                         },
                     },
@@ -701,7 +737,6 @@
             chart: {
                 events: {
                     render: function () {
-                        console.log("test");
                         renderer = chart.renderer,
                             width = 30;
 
@@ -734,21 +769,95 @@
             }
         });
         // Toggle colors on click
-        function toggleColors(nodeIds) {
-            nodeIds.forEach(targetId => {
+        //toogleColors if the points are same and if the points are different, toggle 1 lines. 
+
+        function checkEndNodes() {
+            const blueNodes = chart.series[0].points.filter(point => point.color === 'Blue');
+            var topCategories = [];
+            var highestScore = -Infinity;
+
+            for (var category in feedbackScores) {
+                var score = feedbackScores[category];
+
+                if (score > highestScore) {
+                    highestScore = score;
+                    topCategories = [category];
+                } else if (score === highestScore) {
+                    topCategories.push(category);
+                }
+            }
+            console.log("blue", blueNodes);
+            console.log("topCategories2", topCategories);
+            blueNodes.forEach(targetPoint => {
+                const targetId = targetPoint.id;
                 const toNode = chart.series[0].points.find(point => point.id === targetId);
+
                 if (toNode) {
                     const currentColor = toNode.color;
                     const originalColor = originalColors[targetId];
 
-                    if (currentColor === 'Blue') {
-                        toNode.update({ color: originalColor });
-                    } else {
-                        toNode.update({ color: 'Blue' });
+                    // Check if the toNode's category is not in topCategories
+                    const categoryNotInTop = !topCategories.some(category => toNode.id.includes(category) || toNode.id.includes('core'));
+
+                    if (categoryNotInTop) {
+                        console.log("Category not in topCategories:", toNode.id);
+                        const currentColor = toNode.color;
+
+                        // Perform additional actions if needed
+                        if (currentColor === 'Blue') {
+                            toNode.update({ color: originalColor });
+                        }
                     }
+
+                    // Rest of your code...
                 }
             });
         }
+
+
+
+        function toggleColors(nodeIds) {
+            nodeIds.forEach(targetId => {
+
+                var topCategories = [];
+                var highestScore = -Infinity;
+
+                for (var category in feedbackScores) {
+                    var score = feedbackScores[category];
+
+                    if (score > highestScore) {
+                        highestScore = score;
+                        topCategories = [category];
+                    } else if (score === highestScore) {
+                        topCategories.push(category);
+                    }
+                }
+
+                // Print the result
+                console.log("feedbackScores:", feedbackScores);
+                console.log("Top Scored Categories:", topCategories);
+                console.log("Top Score:", highestScore);
+                //checkEndNodes();
+                const toNode = chart.series[0].points.find(point => point.id === targetId);
+                if (toNode) {
+                    const currentColor = toNode.color;
+                    const originalColor = originalColors[targetId];
+                    topCategories.forEach(category => {
+
+                        //if (toNode.id.includes(category) || toNode.id.includes('core')) {
+                        if (currentColor === 'Blue') {
+                            toNode.update({ color: originalColor });
+                        } else {
+                            toNode.update({ color: 'Blue' });
+                        }
+                        // }
+                    }
+                    )
+                }
+            });
+            checkEndNodes();
+        }
+
     </script>
 
 </body>
