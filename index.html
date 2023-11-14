@@ -4,11 +4,11 @@
 <head>
     <title>Nail-Biting Feedback</title>
     <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
-<link rel="manifest" href="img/site.webmanifest">
-<meta name="msapplication-TileColor" content="#da532c">
-<meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/sankey.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -26,9 +26,10 @@
 <body>
     <figure class="highcharts-figure">
         <div id="container"></div>
-        <h3>Hover over the relevant links to view feedback tailored to your needs. You can <strong>click or unclick multiple nodes</strong> based on your specific cases.</h3>
+        <h3>Hover over the relevant links to view feedback tailored to your needs. You can <strong>click or unclick
+                multiple nodes</strong> based on your specific cases.</h3>
         <div>
-            <h3>1. Can you self-control your nail-biting?</h3>
+            <h3> 1. Can you <u>self-control</u> your nail-biting?</h3>
         </div>
         <div>
             <h3>2. Do you want feedback related to physical intervention (e.g., installing an object to hide nails)?
@@ -51,6 +52,15 @@
         const chart = Highcharts.chart('container', {
             chart: {
                 marginRight: 45, // allows the yAxis labels with (x: 30) to be seen, but reduces navigator size
+            },
+            plotOptions: {
+                series: {
+                    states: {
+                        inactive: {
+                            opacity: 1
+                        }
+                    }
+                }
             },
             title: {
                 text: 'Feedback Suggestion for Suppressing Nail-Biting'
@@ -155,6 +165,8 @@
                                 )
                             },
                             click: function () {
+                                //points update: Vibration ++, Balloon ++, Band ++
+                                //toogleColors if the points are same and if the points are different, toggle 1 lines. 
                                 toggleColors(['id1', 'id2', 'id3', 'id4'])
                             },
                         },
@@ -705,18 +717,18 @@
                         chart.renderer.image('img/vibration.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 67, 40, 40)
                             .add(chart.customImgGroup);
 
-                                                // Render texts
-                                                chart.renderer.image('img/balloon.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 120, 40, 40)
+                        // Render texts
+                        chart.renderer.image('img/balloon.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 120, 40, 40)
                             .add(chart.customImgGroup);
-                                            // Render texts
-                                            chart.renderer.image('img/bending.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 210, 40, 40)
-                             .add(chart.customImgGroup);
-                            //                 // Render texts
-                                             chart.renderer.image('img/actuation.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 295, 40, 40)
-                             .add(chart.customImgGroup);
-                            //                 // Render texts
-                                            chart.renderer.image('img/stimulation.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 360, 40, 40)
-                             .add(chart.customImgGroup);
+                        // Render texts
+                        chart.renderer.image('img/bending.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 210, 40, 40)
+                            .add(chart.customImgGroup);
+                        //                 // Render texts
+                        chart.renderer.image('img/actuation.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 295, 40, 40)
+                            .add(chart.customImgGroup);
+                        //                 // Render texts
+                        chart.renderer.image('img/stimulation.jpg', chart.plotLeft + 30 + chart.plotSizeX - width, 360, 40, 40)
+                            .add(chart.customImgGroup);
                     }
                 }
             }
