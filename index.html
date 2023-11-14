@@ -229,7 +229,7 @@
                             mouseOver: function () {
                                 this.setState('hover');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id6', 'id7', 'id8'];
+                                const targetNodeIds = ['Band2', 'Actuation1', 'Tingling1'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -241,7 +241,7 @@
                             mouseOut: function () {
                                 this.setState('');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id6', 'id7', 'id8'];
+                                const targetNodeIds = ['Band2', 'Actuation1', 'Tingling1'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -265,6 +265,7 @@
                                     feedbackScores.Band++;  // Decrement if color is blue
                                 }
                                 toggleColors(['core2', 'Band2', 'Actuation1', 'Tingling1'])
+
                             },
                         },
                     },
@@ -303,7 +304,7 @@
                             mouseOver: function () {
                                 this.setState('hover');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id10', 'id11'];
+                                const targetNodeIds = ['Band3', 'Actuation2'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -315,7 +316,7 @@
                             mouseOut: function () {
                                 this.setState('');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id10', 'id11'];
+                                const targetNodeIds = ['Band3', 'Actuation2'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -326,7 +327,20 @@
                             },
 
                             click: function () {
-                                toggleColors(['core3', 'id10', 'id11'])
+
+                                const targetId = 'core3';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
+
+                                if (toNode.color !== "#48cfad") {
+                                    feedbackScores.Actuation--;  // Decrement if color is blue
+                                    feedbackScores.Band--;  // Decrement if color is blue
+
+                                } else {
+                                    feedbackScores.Actuation++;  // Decrement if color is blue
+                                    feedbackScores.Band++;  // Decrement if color is blue
+                                }
+                                //toggleColors(['core2', 'Band2', 'Actuation1', 'Tingling1'])
+                                toggleColors(['core3', 'Band3', 'Actuation2'])
                             },
                         },
                     },
@@ -356,7 +370,7 @@
                             mouseOver: function () {
                                 this.setState('hover');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id13', 'id14', 'id15'];
+                                const targetNodeIds = [ 'Vibration2', 'Balloon2', 'Tingling2'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -368,7 +382,7 @@
                             mouseOut: function () {
                                 this.setState('');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id13', 'id14', 'id15'];
+                                const targetNodeIds = [ 'Vibration2', 'Balloon2', 'Tingling2'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -378,8 +392,21 @@
                                 )
                             },
                             click: function () {
+                                const targetId = 'core4';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
 
-                                toggleColors(['core4', 'id13', 'id14', 'id15'])
+                                if (toNode.color !== "#5d9cec") {
+                                    feedbackScores.Vibration--  // Decrement if color is blue
+                                    feedbackScores.Balloon--  // Decrement if color is blue
+                                    feedbackScores.Tingling--  // Decrement if color is blue
+                                } else {
+                                    feedbackScores.Vibration++;  // Decrement if color is blue
+                                    feedbackScores.Balloon++;  // Decrement if color is blue
+                                    feedbackScores.Tingling++;  // Decrement if color is blue
+                                }
+                                //toggleColors(['core2', 'Band2', 'Actuation1', 'Tingling1'])
+
+                                toggleColors(['core4', 'Vibration2', 'Balloon2', 'Tingling2'])
 
                             },
                         },
@@ -422,7 +449,7 @@
                             mouseOver: function () {
                                 this.setState('hover');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id17'];
+                                const targetNodeIds = ['Tingling3'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -434,7 +461,7 @@
                             mouseOut: function () {
                                 this.setState('');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id17'];
+                                const targetNodeIds = ['Tingling3'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -444,21 +471,35 @@
                                 )
                             },
                             click: function () {
+                                const targetId = 'core5';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
 
-                                toggleColors(['core5', 'id17'])
+                                if (toNode.color !== "#ec87c0") {
+                                    feedbackScores.Band--  // Decrement if color is blue
+                          
+                                } else {
+                                    feedbackScores.Band++;  // Decrement if color is blue
+                               
+                                }
+                                //toggleColors(['core2', 'Band2', 'Actuation1', 'Tingling1'])
+
+                                //toggleColors(['core4', 'Vibration2', 'Balloon2', 'Tingling2'])
+
+                                toggleColors(['core5', 'Tingling3'])
 
                             },
                         },
                     },
 
                     {
-                        id: 'id17',
+                        id: 'Tingling3',
                         from: 'Yes',
-                        to: 'Pneumatic Finger Band',
+                        to: 'EMS Tingling Sensation',
                         weight: 10,
                         color: '#ec87c0',
 
                     },
+                    ///
                     {
                         id: 'core6',
                         from: 'Awareness',
@@ -470,7 +511,7 @@
                             mouseOver: function () {
                                 this.setState('hover');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id19'];
+                                const targetNodeIds = ['Actuation3'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -482,7 +523,7 @@
                             mouseOut: function () {
                                 this.setState('');
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id19'];
+                                const targetNodeIds = ['Actuation3'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -492,8 +533,18 @@
                                 )
                             },
                             click: function () {
+                                const targetId = 'core6';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
 
-                                toggleColors(['core6', 'id19'])
+                                if (toNode.color !== "#ccd1d9") {
+                                    feedbackScores.Band--  // Decrement if color is blue
+                                  
+                                } else {
+                                    feedbackScores.Band++;  // Decrement if color is blue
+                        
+                                }
+                      
+                                toggleColors(['core6', 'Actuation3'])
 
                             },
                         },
@@ -502,13 +553,14 @@
 
                     {
 
-                        id: 'id19',
+                        id: 'Actuation3',
                         from: 'No',
-                        to: 'Pneumatic Finger Band',
+                        to: 'EMS Actuation',
                         weight: 10,
                         color: '#ccd1d9',
 
                     },
+                    ///
                     {
                         id: 'core7',
                         from: 'Distraction',
@@ -522,7 +574,7 @@
                                 this.setState('hover');
                                 // Find the related "to" nodes ('id2', 'id3', 'id4') and set their hover states
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id21'];
+                                const targetNodeIds = ['Balloon3'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -536,7 +588,7 @@
                                 this.setState('');
                                 // Find the related "to" nodes ('id2', 'id3', 'id4') and reset their states
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id21'];
+                                const targetNodeIds = ['Balloon3'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -546,21 +598,32 @@
                                 )
                             },
                             click: function () {
+                                const targetId = 'core7';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
 
-                                toggleColors(['core7', 'id21'])
+                                if (toNode.color !== "#F6FA70") {
+                                    feedbackScores.Balloon--  // Decrement if color is blue
+                                  
+                                } else {
+                                    feedbackScores.Balloon++;  // Decrement if color is blue
+                        
+                                }
+                      
+                                toggleColors(['core7', 'Balloon3'])
 
                             },
                         },
                     },
 
                     {
-                        id: 'id21',
+                        id: 'Balloon3',
                         from: 'Yes',
                         to: 'Pneumatic Balloon',
                         weight: 10,
                         color: '#F6FA70',
 
                     },
+                    ///
                     {
                         id: 'core8',
                         from: 'Distraction',
@@ -574,7 +637,7 @@
                                 this.setState('hover');
                                 // Find the related "to" nodes ('id2', 'id3', 'id4') and set their hover states
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id23'];
+                                const targetNodeIds = ['Vibration3'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -588,7 +651,7 @@
                                 this.setState('');
                                 // Find the related "to" nodes ('id2', 'id3', 'id4') and reset their states
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id23'];
+                                const targetNodeIds = ['Vibration3'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -598,8 +661,19 @@
                                 )
                             },
                             click: function () {
+                                const targetId = 'core8';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
 
-                                toggleColors(['core8', 'id23'])
+                                if (toNode.color !== "#a0d468") {
+                                    feedbackScores.Vibration--  // Decrement if color is blue
+                                  
+                                } else {
+                                    feedbackScores.Vibration++;  // Decrement if color is blue
+                        
+                                }
+                      
+                                toggleColors(['core8', 'Vibration3'])
+                                //toggleColors(['core8', 'id23'])
 
                             },
                         },
@@ -607,13 +681,14 @@
 
                     {
 
-                        id: 'id23',
+                        id: 'Vibration3',
                         from: 'No',
                         to: 'Vibration',
                         weight: 10,
                         color: '#a0d468',
 
                     },
+///
                     {
                         id: 'core9',
                         from: 'Want Strong Feedback',
@@ -627,7 +702,7 @@
                                 this.setState('hover');
                                 // Find the related "to" nodes ('id2', 'id3', 'id4') and set their hover states
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id25'];
+                                const targetNodeIds = ['Actuation4'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -641,7 +716,7 @@
                                 this.setState('');
                                 // Find the related "to" nodes ('id2', 'id3', 'id4') and reset their states
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id25'];
+                                const targetNodeIds = ['Actuation4'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -651,8 +726,20 @@
                                 )
                             },
                             click: function () {
+                                const targetId = 'core9';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
 
-                                toggleColors(['core9', 'id25'])
+                                if (toNode.color !== "#656d78") {
+                                    feedbackScores.Actuation--  // Decrement if color is blue
+                                  
+                                } else {
+                                    feedbackScores.Actuation++;  // Decrement if color is blue
+                        
+                                }
+                      
+                                //toggleColors(['core8', 'Vibration3'])
+                               
+                                toggleColors(['core9', 'Actuation4'])
 
                             },
                         },
@@ -660,7 +747,7 @@
 
                     {
 
-                        id: 'id25',
+                        id: 'Actuation4',
                         from: 'Yes',
                         to: 'EMS Actuation',
                         weight: 10,
@@ -680,7 +767,7 @@
                                 this.setState('hover');
                                 // Find the related "to" nodes ('id2', 'id3', 'id4') and set their hover states
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id27'];
+                                const targetNodeIds = ['Band6'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -694,7 +781,7 @@
                                 this.setState('');
                                 // Find the related "to" nodes ('id2', 'id3', 'id4') and reset their states
                                 const chart = this.series.chart;
-                                const targetNodeIds = ['id27'];
+                                const targetNodeIds = ['Band6'];
                                 targetNodeIds.forEach(targetId => {
                                     const toNode = chart.series[0].points.find(point => point.id === targetId);
                                     if (toNode) {
@@ -704,14 +791,24 @@
                                 )
                             },
                             click: function (event) {
+                                const targetId = 'core10';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
 
-                                toggleColors(['core10', 'id27'])
+                                if (toNode.color !== "#A633AA") {
+                                    feedbackScores.Band--  // Decrement if color is blue
+                                  
+                                } else {
+                                    feedbackScores.Band++;  // Decrement if color is blue
+                        
+                                }
+                      
+                                toggleColors(['core10', 'Band6'])
                             }
                         },
                     },
                     {
 
-                        id: 'id27',
+                        id: 'Band6',
                         from: 'No',
                         to: 'Pneumatic Finger Band',
                         weight: 10,
@@ -856,6 +953,12 @@
                 }
             });
             checkEndNodes();
+            //No core selected ==> reset everything
+            if (feedbackScores.Vibration == 0 && feedbackScores.Balloon == 0 && feedbackScores.Band == 0 && feedbackScores.Actuation == 0 && feedbackScores.Tingling == 0) {
+                chart.series[0].points.forEach(point => {
+                    point.update({ color: originalColors[point.id] });
+                });
+            }
         }
 
     </script>
