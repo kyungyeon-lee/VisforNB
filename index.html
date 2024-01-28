@@ -819,30 +819,119 @@
                         color: '#A633AA',
                     },
 
-                    {id: 'PunishmentY',
+                    {id: 'core11',
                         from: 'Punishment',
                         to: 'Yes',
                         weight: 10,
                         color: '#99f7fa',
                         
+                        events: {
+                            mouseOver: function () {
+                                this.setState('hover');
+                                const chart = this.series.chart;
+                                const targetNodeIds = ['Tingling4'];
+                                targetNodeIds.forEach(targetId => {
+                                    const toNode = chart.series[0].points.find(point => point.id === targetId);
+                                    if (toNode) {
+                                        toNode.setState('hover');
+                                    }
+                                }
+                                )
+                            },
+                            mouseOut: function () {
+                                this.setState('');
+                                const chart = this.series.chart;
+                                const targetNodeIds = ['Tingling4'];
+                                targetNodeIds.forEach(targetId => {
+                                    const toNode = chart.series[0].points.find(point => point.id === targetId);
+                                    if (toNode) {
+                                        toNode.setState('');
+                                    }
+                                }
+                                )
+                            },
+                            click: function () {
+                                const targetId = 'core11';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
+
+                                if (toNode.color !== "#99f7fa") {
+                                    feedbackScores.Tingling--  // Decrement if color is blue
+                          
+                                } else {
+                                    feedbackScores.Tingling++;  // Decrement if color is blue
+                               
+                                }
+                                //toggleColors(['core2', 'Band2', 'Actuation1', 'Tingling1'])
+
+                                //toggleColors(['core4', 'Vibration2', 'Balloon2', 'Tingling2'])
+
+                                toggleColors(['core11', 'Tingling4'])
+
+                            },
+                        },
                     },
-                    {id: 'PunishmentN',
+                    {id: 'core12',
                         from: 'Punishment',
                         to: 'No',
                         weight: 10,
-                        color: '#99f7fa',
+                        color: '#22f7f9',
+                        events: {
+                            mouseOver: function () {
+                                this.setState('hover');
+                                const chart = this.series.chart;
+                                const targetNodeIds = ['Tingling5'];
+                                targetNodeIds.forEach(targetId => {
+                                    const toNode = chart.series[0].points.find(point => point.id === targetId);
+                                    if (toNode) {
+                                        toNode.setState('hover');
+                                    }
+                                }
+                                )
+                            },
+                            mouseOut: function () {
+                                this.setState('');
+                                const chart = this.series.chart;
+                                const targetNodeIds = ['Tingling5'];
+                                targetNodeIds.forEach(targetId => {
+                                    const toNode = chart.series[0].points.find(point => point.id === targetId);
+                                    if (toNode) {
+                                        toNode.setState('');
+                                    }
+                                }
+                                )
+                            },
+                            click: function () {
+                                const targetId = 'core12';
+                                const toNode = chart.series[0].points.find(point => point.id === targetId);
+
+                                if (toNode.color !== "#22f7f9") {
+                                    feedbackScores.Tingling--  // Decrement if color is blue
+                          
+                                } else {
+                                    feedbackScores.Tingling++;  // Decrement if color is blue
+                               
+                                }
+                                //toggleColors(['core2', 'Band2', 'Actuation1', 'Tingling1'])
+
+                                //toggleColors(['core4', 'Vibration2', 'Balloon2', 'Tingling2'])
+
+                                toggleColors(['core12', 'Tingling5'])
+
+                            },
+                        },
+                    
                     },
-                    {id: 'PunishmentNF',
-                        from: 'No',
-                        to: 'EMS Tingling Sensation',
-                        weight: 10,
-                        color: '#99f7fa',
-                    },
-                    {id: 'PunishmentYF',
+                    {id: 'Tingling4',
                         from: 'Yes',
                         to: 'EMS Tingling Sensation',
                         weight: 10,
                         color: '#99f7fa',
+                    },
+                    {id: 'Tingling5',
+                        from: 'No',
+                        to: 'EMS Tingling Sensation',
+                        weight: 10,
+                        color: '#22f7f9',
                     },
                     
 
